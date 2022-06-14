@@ -1,0 +1,453 @@
+/* GERAL =================================*/
+
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box; /* Não soma com a borda e sim que seja contada a partir da borda*/
+}
+
+:root {
+
+    --primary-color: hsl(170, 100%, 26%); /* variavel css*/
+    --headline: hsl(210, 11%, 15%);
+    --paragraph:hsl(210, 9%, 31%);
+    --background:hsl(148, 23%, 89%, 1);
+    --fundo: hsla(39, 100%, 97%, 1);
+    --brand-light: hsla(148, 23%, 89%, 1);
+    --brand-dark: hsla(170, 100%, 14%, 1);
+
+    --nav-height: 7.2rem;
+    --bg-light: hsla(180, 14%, 97%, 1);
+
+
+
+    font-size: 62.5%; /* 1rem = 10px  */
+}
+html {
+    scroll-behavior: smooth;
+}
+html,
+body {
+    width: 100%;
+    height: 100%;
+}
+
+body  {
+    
+    text-align: center;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 1.6rem;
+    text-align: center;
+    overflow: overlay;
+    /*background-color: var(--background);*/
+
+    background: var(--bg-light);
+}
+.wrapper {
+    width: 37.5rem;
+    margin-inline: auto;
+    padding: 1.6rem 2.4rem;
+}
+ul{
+    list-style:none;
+}
+a{
+    text-decoration: none;
+}
+
+section {
+    padding-block: 3rem;
+}
+
+section header h4 {
+        font-size: 1.4rem; /*14px */
+        color: var(--primary-color);
+        margin-bottom: 1.6rem ;
+}
+section header h2{
+        font-size: 3.0rem;
+        line-height: 3.9rem;
+        color: var(--headline);
+        text-align: center;
+}
+section header h1 {
+    font-size: 3.4rem;
+    color: var(--headline);
+    line-height: 130%;
+
+    margin-bottom: 1.4rem ;
+    color: var(--paragraph);
+}
+
+section .content p {
+    font-weight: 400;
+    font-size:1.6rem;
+    line-height: 150%;
+}
+.button {
+    background-color: var(--primary-color);
+
+    border: none;
+    border-radius: 4rem;
+  
+    margin-bottom: 6.0rem;
+
+    padding: 1.6rem 3.2rem;
+   
+
+    color: #FFFFFF;
+    text-transform: uppercase;
+    font-size: 1.4rem;
+    font-weight: 700;
+    
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1.6rem;
+    
+    text-decoration: none;
+    transition: background .2s;
+
+  
+}
+.button:hover {
+    background-color: var(--brand-dark);
+}
+/* home===================================  */
+
+#home {
+   padding-top: calc(4.1rem + var(--nav-height));
+   
+}
+#home::before {
+    content: ''; /*conteudo vazio*/
+    width: 100%;
+    height: calc(108rem + var(--nav-height));
+    
+    background-color: var(--background);
+    
+
+   /* display: inline; - não aceita algumas props*/
+
+    display: block;
+    position: absolute; /* o conteudo fica sobreposto*/
+    top: 0;
+    left: 0;
+    z-index: -1; /* para fica no fundo do conteudo é negativo*/
+
+
+}
+
+#contact .button {
+    margin-top: 3.2rem;
+    margin-right: 3.2rem;
+    
+
+}
+
+#home p {
+    font-size: 1.8rem;
+    line-height: 150%;
+    font-weight: 400;
+    color: var(--paragraph-color);
+    margin-bottom: 3.2rem ;
+}
+
+#home h3 {
+    font-size: 4.8rem;
+}
+
+#home img {
+    width: 26.4rem;
+    display: block;
+    margin-inline: auto;
+
+    object-position: 0px 2.5rem; 
+}
+
+
+/*pseudoselect- CRIANDO TAG HTML COM CSS 
+
+    antes do header
+
+*/
+
+
+.stats {
+    width: 32.7rem;
+   
+    padding-block: 4rem;
+
+    margin-inline: auto;
+
+    background-color: var(--fundo);
+    border: 1px solid var(--brand-light);
+    border-radius: 0.6rem;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 6rem;
+
+    
+
+}
+.stat h3 {
+   font-size: 4.8rem;
+   color: var(--headline);
+   line-height: 130%;
+
+   margin-bottom: 0.4rem;
+}
+
+.stat p {
+    margin: 0;
+    color: var(--primary-color);
+    font-size: 1.6rem;
+    line-height: 130%;
+}
+
+/*NAVIGATION ======================*/
+nav {
+    display: flex;
+    height: var(--nav-height);
+    
+  
+    position: fixed;
+    top: 0;
+    width: 100vw;
+
+    
+    z-index: 100;
+  
+}
+nav .wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+nav.scroll {
+    background:var(--primary-color);
+}
+
+nav.scroll .logo path {
+    fill: #FFFFFF;
+}
+nav.scroll button path{
+    stroke: #FFFFFF;
+}
+nav button {
+    background: none;
+    border: none;
+    cursor: pointer;
+}
+
+/*menu-expanded======================*/
+body.menu-expanded {
+    overflow:hidden;
+}
+body.menu-expanded > :not(nav){
+   visibility: hidden;
+}
+.menu,
+.close-menu,
+body.menu-expanded .open-menu {
+    opacity: 0;
+    visibility: hidden;
+}
+body.menu-expanded .menu, /*menu ativado*/
+body.menu-expanded .close-menu {
+    opacity: 1;
+    visibility: visible;
+}
+.menu {
+    transform: translateX(100%);
+}
+
+body.menu-expanded .menu  {
+    position: fixed;
+    top:0;
+    left: 0;
+    background: var(--primary-color);
+    width: 100vw;
+    height: 100vh;
+
+    padding-top: var(--nav-height) ;
+
+    transition: transform 700ms; /*BRIQUEE*/
+    transform: translateX(0);
+    
+}
+
+/*menu */
+
+.menu li {
+    display: flex;
+    flex-direction: column;
+    gap: 4.8rem;
+    margin-top: 6rem;
+    
+    font-weight: 700;
+    font-size: 2.4rem;
+    line-height: 3.1rem;
+ 
+}
+
+.menu a {
+    color: #FFFFFF;
+    text-decoration: none;
+}
+.menu .button {
+    background: #FFFFFF;
+    border-radius: 4rem;
+    font-weight: 700;
+    font-size: 1.8rem;
+    line-height: 2.3rem;
+    text-transform: uppercase;
+  
+
+    color: var(--primary-color);
+    display: inline-block;
+    padding: 16px 32px;
+    border: none;
+
+    margin-top: 4.8rem;
+    margin-bottom: 2.4rem;
+    
+   
+}
+
+.social-links{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 3.2rem;
+    
+
+}
+
+body.menu-expanded .logo, 
+body.menu-expanded button {
+    position: relative;
+    z-index: 100;
+}
+
+body.menu-expanded .logo path {
+    fill: #FFFFFF;
+}
+body.menu-expanded button path{
+    stroke: #FFFFFF;
+}
+/*services */
+#services header h2 {
+    margin-bottom: 6rem;
+}
+
+#services header h4 {
+    font-size: 1.4rem;
+    line-height: 150%;
+    letter-spacing: 0.08rem;
+
+    color: var(--primary-color);
+    margin-bottom: 1.6rem;
+}
+
+#services .card {
+    padding: 2.4rem;
+    text-align: left;
+    border: 1px solid var(--brand-light);
+
+    border-radius: .6rem;
+
+    box-sizing: border-box;
+    background: #FFFFFF;
+}
+
+#services .cards{
+    display: flex;
+    flex-direction: column;
+    gap: 3.2rem;
+}
+
+#services .card h3 {
+    margin-block: 1.6rem;
+}
+
+/*About ============*/
+#about {
+    text-align: left;
+    background-color: var(--fundo);
+}
+#about header h2 {
+    margin-bottom: 2.4rem;
+}
+
+/*Contact============================*/
+
+#contact {
+    text-align: left;
+
+}
+#contact header {
+    margin-bottom:3.2rem;
+}
+
+#contact ul {
+    display: flex;
+    flex-direction: column;
+    gap: 1.6rem;
+
+}
+
+#contact ul li {
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+}
+
+
+footer {
+    background-color: var(--primary-color);
+    padding-block: 6rem ;
+    text-align: left;
+    color: #FFFFFF;
+}
+footer .logo {
+    display: inline-block; /* img é in-line*/
+    margin-bottom: 2.4rem;
+}
+footer .logo svg {
+    width: 23.6rem;
+    height: 3.1rem;
+}
+footer .logo path {
+    fill: #FFFFFF;
+}
+footer p {
+    color: var(--background);
+    line-height: 2;
+    margin-bottom: 3.2rem;
+
+}
+
+footer .social-links {
+    justify-content: flex-start;
+}
+
+/*button*/
+#backToTopButton {
+    position: fixed;
+    bottom: 1rem;
+    right: 2.5rem;
+
+    opacity: 0;
+    visibility: hidden;
+}
+#backToTopButton.show {
+    opacity: 1;
+    visibility: visible;
+}
+
+
